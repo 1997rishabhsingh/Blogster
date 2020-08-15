@@ -2,7 +2,7 @@ const { promisify } = require("util");
 const { Query } = require("mongoose");
 const { createClient } = require("redis");
 
-const { redis } = require("../config/keys");
+const { redisUrl } = require("../config/keys");
 
 const client = createClient(redisUrl);
 client.hget = promisify(client.hget);
