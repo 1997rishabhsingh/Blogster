@@ -13,10 +13,23 @@ export const handleToken = (token) => async (dispatch) => {
   dispatch({ type: FETCH_USER, payload: res.data });
 };
 
-export const submitBlog = (values, history) => async (dispatch) => {
+export const submitBlog = (values, file, history) => async (dispatch) => {
+  // // NOTE: Uploading requires AWS S3 Bucket to work
+  // const upploadRes = await axios.get("/api/upload");
+
+  // // key -> unique filename genetared on server
+  // const { url, key } = uploadRes.data;
+
+  // await axios.put(url, file, {
+  //   headers: {
+  //     "Content-Type": file.type
+  //   }
+  // });
+
+  // const res = await axios.post("/api/blogs", {...values, imageUrl: key});
+
   const res = await axios.post("/api/blogs", values);
 
-  console.log("Action: ", res.data.length);
   history.push("/blogs");
   dispatch({ type: FETCH_BLOG, payload: res.data });
 };
